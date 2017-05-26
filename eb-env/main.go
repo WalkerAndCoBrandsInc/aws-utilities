@@ -31,7 +31,7 @@ func main() {
 
 	value, err := readEnvFromFile()
 	if err != nil {
-		log.Fatalf("ERROR: reading name:%s from file:%s, ", *name, configFile, err)
+		log.Fatalf("ERROR: reading name:%s\nfrom file:%s\n%v", *name, *configFile, err)
 	}
 
 	fmt.Println(value)

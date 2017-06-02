@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"path/filepath"
@@ -15,7 +16,10 @@ type EbExtension struct {
 	Commands map[string]interface{} `yaml:"commands"`
 }
 
-var dir = flag.String("dir", "", "Path to directory with YAML files to run checker against")
+var (
+	dir = flag.String("dir", "", "Path to directory with YAML files to run checker against")
+	ext = flag.String("ext", "yaml", "Extension of YAML files")
+)
 
 func main() {
 	flag.Parse()
@@ -26,6 +30,10 @@ func main() {
 	}
 
 	for _, file := range files {
+		if filepath.Ext(file.Name()) != fmt.Sprintf(".%s", *ext) {
+			continue
+		}
+
 		data, err := ioutil.ReadFile(filepath.Join(*dir, file.Name()))
 		if err != nil {
 			log.Fatalf("error in file: %s : %v", file.Name(), err)

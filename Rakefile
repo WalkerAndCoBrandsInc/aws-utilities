@@ -2,6 +2,7 @@ task :build do
   # This script is not longer required.
   # sh "go build -o bin/assign-to-layer-#{VERSION} assign-to-layer/*.go"
   sh "go build -o bin/eb-env eb-env/*.go"
+  sh "go build -o bin/yaml-check yaml-check/*.go"
 end
 
 task :build_zip => [:build] do

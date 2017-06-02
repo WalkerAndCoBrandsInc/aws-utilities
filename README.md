@@ -1,6 +1,6 @@
 # AWS Utilities
 
-Bundle of small utilities programs for use with AWS EB Edit
+Bundle of small utilities programs for use with AWS ElasticBeanstalk
 
 ## Build
 

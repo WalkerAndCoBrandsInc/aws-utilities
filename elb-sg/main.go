@@ -6,21 +6,18 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
 )
 
+var (
+	sg = flag.String("sg", "", "Security group to add tcp 80 open rule.")
+)
+
 func main() {
 	flag.Parse()
-
-	sg := os.Getenv("ELB_SECURITY_GROUP")
-	if sg == "" {
-		fmt.Println("No security group found under env 'ELB_SECURITY_GROUP'")
-		os.Exit(1)
-	}
 
 	resp, err := http.Get("http://169.254.169.254/latest/meta-data/public-ipv4")
 	if err != nil {
@@ -37,8 +34,7 @@ func main() {
 	session.Must(session.NewSession())
 	svc := ec2.New(session.New())
 	input := &ec2.AuthorizeSecurityGroupEgressInput{
-		DryRun:  aws.Bool(true),
-		GroupId: aws.String(sg),
+		GroupId: sg,
 		IpPermissions: []*ec2.IpPermission{
 			{
 				FromPort:   aws.Int64(80),

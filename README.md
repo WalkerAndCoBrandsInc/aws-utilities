@@ -2,12 +2,6 @@
 
 Bundle of small utilities programs for use with AWS ElasticBeanstalk.
 
-## assign-to-layer
-
-assign-to-layer assigns instances that are already registered to the given stack to the given layer.
-
-    env AWS_REGION=us-east-1 STACK_ID= LAYER_ID= go run assign-to-layer/main.go
-
 ## eb-env
 
 eb-env fetches given environment variable from the environment or defaults to the ElasticBeanstalk [file ](/opt/elasticbeanstalk/deploy/configuration/containerconfiguration) that contains configuration options, along with environment variable. If environment variable is not found, it returns an empty string.

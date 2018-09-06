@@ -33,7 +33,7 @@ func main() {
 
 	session.Must(session.NewSession())
 	svc := ec2.New(session.New())
-	input := &ec2.AuthorizeSecurityGroupEgressInput{
+	input := &ec2.AuthorizeSecurityGroupIngressInput{
 		GroupId: sg,
 		IpPermissions: []*ec2.IpPermission{
 			{
@@ -47,7 +47,7 @@ func main() {
 		},
 	}
 
-	result, err := svc.AuthorizeSecurityGroupEgress(input)
+	result, err := svc.AuthorizeSecurityGroupIngress(input)
 	if err != nil {
 		log.Fatal(err)
 	}

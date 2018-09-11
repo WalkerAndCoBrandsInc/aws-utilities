@@ -28,6 +28,8 @@ cloudflare-sg opens tcp port 80, 443 of all known cloudflare ips as of (Sept 11,
 
     ./cloudflare-sg -sg=<sg-insert-id-here>
 
+This script is meant to be on once for each of `bevel-*` load balancer security group, hence not part of aws-utilities.zip.
+
 ## Build (IMPORTANT)
 
 To build and zip the libraries:

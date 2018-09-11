@@ -22,10 +22,16 @@ elb-sg adds open port tcp 80 of the AWS instance running the script to the given
 
     ./elb-sg -sg=<sg-insert-id-here>
 
-## Build
+## cloudflare-sg
+
+cloudflare-sg opens tcp port 80, 443 of all known cloudflare ips as of (Sept 11, 2018) as specified in https://www.cloudflare.com/ips to given security group.
+
+    ./cloudflare-sg -sg=<sg-insert-id-here>
+
+## Build (IMPORTANT)
 
 To build and zip the libraries:
 
     rake
 
-Commit the changes including aws-utilities.zip and then open a PR to develop. Once merged, EB instances will clone the repo and unzip the binaries from aws-utilities.zip.
+Commit the changes including aws-utilities.zip and then open a PR to develop. Once merged, EB instances will clone the repo and unzip the binaries from aws-utilities.zip. This is important, without it your changes won't be accessible!

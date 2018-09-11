@@ -67,6 +67,13 @@ func main() {
 				Ipv6Ranges: ipv6Ranges,
 				ToPort:     aws.Int64(80),
 			},
+			{
+				FromPort:   aws.Int64(443),
+				IpProtocol: aws.String("tcp"),
+				IpRanges:   ipRanges,
+				Ipv6Ranges: ipv6Ranges,
+				ToPort:     aws.Int64(443),
+			},
 		},
 	}
 
